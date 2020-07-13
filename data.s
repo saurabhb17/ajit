@@ -1,62 +1,31 @@
-	.section ".data"
-	.type array, #object
+! --------.data-----------------
+
+	.section ".data"! the .data section is used for normal read/write data
+
+! --------.rodata-------------------
+! the .rodata section is used for read-only data
+    .section ".rodata"
+
+! array_input is a global read-only array
+    .global array_input
 	.align 4
-	.global array
-array:
-	.align 4
+array_input:
 	.word 4			! Number of elements in the array
-
-	.align 4
 	.word 1			! First element
-
-	.align 4
 	.word 2			! Second element
-
-	.align 4
 	.word 3			! Third element
-
-	.align 4
 	.word 4			! Fourth element
 
-	.size array, .-array
+! ---------.bss---------------------
+! the .bss section is used for data allocated (as zeroes) at run-time
+! data in this section does not occupy space in the ELF file
+    .section ".bss"
 
+! heap is a global "bss" integer allocated at run-time
+    .global heap 
+    .align 4
+heap: .skip 256 ! ((8*8)*4) these many bytes
 
-
-	.type array_test, #object
-	.align 4
-	.global array_test
-array_test:
-	.align 4
-	.word 10
-
-	.align 4
-	.word 23
-
-	.align 4
-	.word 99
-	
-	.align 4
-	.word 15
-
-	.align 4
-	.word 76
-
-	.align 4
-	.word 0
-
-	.align 4
-	.word 48
-
-	.align 4
-	.word 87
-
-	.align 4
-	.word 37
-
-	.align 4
-	.word 63
-
-	.align 4
-	.word -1
-
-	.size array_test, .-array_test
+    .global array_output
+    .align 4
+array_output: skip 32   ! (8*4) these many bytes
