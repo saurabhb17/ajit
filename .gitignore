@@ -1,0 +1,14 @@
+source.sh
+
+*.log
+*.elf
+*.hex
+*.mmap
+*.mmap.remapped
+*.objdump
+*trace*
+*.vars
+*tables.s
+
+sparc-assembly/
+sparc-obj/
